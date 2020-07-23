@@ -1,0 +1,87 @@
+    <!-- partial -->
+    <div class="container-fluid page-body-wrapper">
+      <app-header></app-header>
+      <div class="main-panel">
+        <div class="content-wrapper">
+          <div class="row">
+            <div class="col-lg-12">
+              <div class="card">
+                <div class="card-body">
+                  <form class="cmxform" id="signupForm" method="get" action="#">
+                    <ngx-spinner
+                    [fullScreen] = "false"
+                    ></ngx-spinner>
+                    <fieldset>
+                      <div class="form-group">
+                        <label class="font-weight-bold">First Name</label>
+                        <input id="" class="form-control" disabled=true name="firstName" [(ngModel)]="firstName" type="text" placeholder="First Name">
+                      </div>
+                      <div class="form-group">
+                        <label class="font-weight-bold">Last Name</label>
+                        <input id="" class="form-control" disabled=true name="lastName" [(ngModel)]="lastName" type="text" placeholder="Last Name">
+                      </div>
+                      <div class="form-group">
+                        <label class="font-weight-bold">Phone Number</label>
+                        <input id="" class="form-control" disabled=true name="phoneNumber" [(ngModel)]="phoneNumber" type="text" placeholder="Phone Number">
+                      </div>
+                      <div class="form-group">
+                        <label class="font-weight-bold">Email Address</label>
+                        <input id="" class="form-control" disabled=true name="email" [(ngModel)]="email" type="text" placeholder="Email Address">
+                      </div>
+                      <div class="form-group">
+                        <label class="font-weight-bold">Designation</label>
+                        <input id="" class="form-control" disabled=true name="designation" [(ngModel)]="designation" type="text" placeholder="Designation">
+                      </div>
+                      <div class="form-group">
+                        <label class="font-weight-bold">Office Name</label>
+                        <input id="" class="form-control" disabled=true name="officeName" [(ngModel)]="officeName" type="text" placeholder="Office Name">
+                      </div>
+                      <div class="form-group">
+                        <label class="font-weight-bold">Office Address</label>
+                        <input id="" class="form-control" disabled=true name="officeAddress" [(ngModel)]="officeAddress" type="text" placeholder="Office Address">
+                      </div>
+                      <div class="form-group">
+                        <label class="font-weight-bold">Office Phone Number</label>
+                        <input id="" class="form-control" disabled=true name="officePhoneNumber" [(ngModel)]="officePhoneNumber" type="text" placeholder="Office Phone Number">
+                      </div>
+                     <div class="form-group">
+                        <label class="font-weight-bold">Website</label>
+                        <input id="" class="form-control" disabled=true name="website" [(ngModel)]="website" type="text" placeholder="Website">
+                      </div>
+                      <!-- <div class="form-group">
+                        <label for="upload">Upload a Picture</label>
+                        <input type="file" name="img[]" class="file-upload-default">
+                        <div class="input-group col-xs-12">
+                          <input type="text" name="upload" id="upload" class="form-control file-upload-info" disabled placeholder="Upload Company Logo">
+                          <span class="input-group-append">
+                            <button class="file-upload-browse btn btn-primary bg-gradient-info" type="button">Upload</button>
+                          </span>
+                        </div>
+                      </div>
+                      <div class="form-group">
+                        <label for="upload">Agent Signature</label>
+                        <input type="file" name="img[]" class="file-upload-default">
+                        <div class="input-group col-xs-12">
+                          <input type="text" name="upload" id="upload" class="form-control file-upload-info" disabled placeholder="Agent Signature">
+                          <span class="input-group-append">
+                            <button class="file-upload-browse btn btn-primary bg-gradient-info" type="button">Upload</button>
+                          </span>
+                        </div>
+                      </div> -->
+                      <!-- <input class="btn btn-primary" type="submit" value="Submit"> -->
+                       <!-- <a href="#"><button type="submit" value="Submit" class="send">Edit Profile</button></a> -->
+                    </fieldset>
+                  </form>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- content-wrapper ends -->
+        <!-- partial:partials/_footer.html -->
+        <app-footer></app-footer>
+        <!-- partial -->
+      </div>
+      <!-- main-panel ends -->
+    </div>
+    <!-- page-body-wrapper ends -->

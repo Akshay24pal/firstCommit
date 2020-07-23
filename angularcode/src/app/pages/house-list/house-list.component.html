@@ -1,0 +1,50 @@
+<div class="container-fluid page-body-wrapper">
+    <app-header></app-header>
+    <!-- <router-outlet></router-outlet> -->
+
+      <div  class="main-panel ">
+        <div  class="content-wrapper ">
+          <router-outlet></router-outlet>
+          <div  class="row grid-margin ">
+            
+            <ngx-spinner
+            [fullScreen] = "false"
+             ></ngx-spinner>
+            <div  class="col-lg-12 details" style="visibility:visible;display:block">
+             <div (click)="showDetails()"  class="card rounded mb-4"  *ngFor="let house of houseList">
+                <div  class="card-body p-3">
+                  <a routerLink="./open-house-details" (click)="setHouseId(house._id)" class="list_card_a">
+                   <div class="row">
+                     <div class="col-md-2 col-lg-2">
+                        <img class="view_listing_img mb-2" *ngIf="house && !house.houseImage" src="../../../../assets/images/house.png"/>
+                        <img class="view_listing_img mb-2" *ngIf="house" src="{{house.houseImage}}"/>
+                     </div>
+                     <div class="col-md-9 col-lg-9">
+                       <div class="media pt-2">
+                        <div class="media-body">
+                          <h6 class="mb-1">{{house.title}}</h6>
+                          <p class="mb-0 text-muted">{{house.description}}</p>
+                        </div>                              
+                      </div> 
+                     </div>
+                     <div class="col-md-1 col-lg-1 col-2">
+                        <i class="fa fa-angle-right icon-md align-self-center mt-4 mr-2 pull-right"></i>
+                     </div>
+                   </div>
+                  </a>
+                </div>
+              </div>
+              
+            </div>
+          </div>
+        </div>
+        <!-- partial:partials/_footer.html -->
+        <app-footer></app-footer>
+
+        <!-- partial -->
+      </div>
+      <!-- main-panel ends -->
+     </div>
+
+  
+

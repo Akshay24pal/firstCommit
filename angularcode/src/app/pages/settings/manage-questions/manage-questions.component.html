@@ -1,0 +1,39 @@
+
+    <!-- partial -->
+    <div class="container-fluid page-body-wrapper">
+      
+      <app-header></app-header>
+      <!-- partial -->
+      <div class="main-panel">
+        <div class="content-wrapper">
+          <router-outlet></router-outlet>
+          <ngx-spinner ></ngx-spinner>
+          <div (click)="showDetails()" routerLink="./add-manage" style="visibility:visible;display:block"  class="row grid-margin questions">
+            <div class="col-lg-12">
+              <div class="card rounded mb-4" *ngFor="let house of houseList">
+                <div class="card-body p-3" (click)="setHouseId(house)">
+                  <a  class="list_card_a">
+                   <div class="media">
+                    <div class="media-body">
+                      <h6 class="mb-1" *ngIf="house" >{{house.title}}</h6>
+                    </div>                              
+                    <i class="fa fa-angle-right icon-md text-primary align-self-center mb-1 ml-3"></i>
+                   </div> 
+                  </a>
+                </div>
+              </div>
+ 
+            </div>
+          </div>
+        </div>
+        <!-- content-wrapper ends -->
+        <!-- partial:partials/_footer.html -->
+        <app-footer></app-footer>
+        <!-- partial -->
+      </div>
+      <!-- main-panel ends -->
+    </div>
+    <!-- page-body-wrapper ends -->
+  
+  
+

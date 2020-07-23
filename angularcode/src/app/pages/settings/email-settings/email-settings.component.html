@@ -1,0 +1,45 @@
+<div class="container-fluid page-body-wrapper">
+  <app-header></app-header>
+   <!-- partial -->
+   <div class="main-panel">
+     <div class="content-wrapper">
+       <div class="row grid-margin">
+         <div class="col-lg-12">
+           <div class="card">
+             <div class="card-body">
+               <form  [formGroup]="form" (ngSubmit)="onSubmit()">
+                 <div class="form-group">
+
+                   <select class="form-control" id="choose_house"  (change)="select($event.target.value)" >
+                     <!-- <option>Choose a house</option> -->
+                     <option >Choose a house</option>
+                     <option  *ngFor="let house of houseList" ><div >{{house.title}}</div></option>
+                     <!-- <option>Equitable Property Group (Open House 2)</option> -->
+                   </select>
+                   <div *ngIf=editor>
+                    <input formControlName="html"  [ngxSummernote]>
+
+                   </div>
+                   <!-- <div [ngxSummernoteView]="form.get('html').value"></div> -->
+
+                 </div>
+                 <button type="button" class="send" type="submit" value="Submit" >Send</button>
+
+               </form>
+               <div id="summernoteExample">
+               </div>
+             </div>
+           </div>
+         </div>
+       </div>
+     </div>
+     <!-- content-wrapper ends -->
+     <!-- partial:partials/_footer.html -->
+     <app-footer></app-footer>
+     <!-- partial -->
+   </div>
+   <!-- main-panel ends -->
+ </div>
+ <!-- page-body-wrapper ends -->
+
+

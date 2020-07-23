@@ -1,0 +1,41 @@
+
+    <div class="container-fluid page-body-wrapper">
+      <app-header></app-header>
+      <div class="main-panel">
+        <div class="content-wrapper">
+          <div class="row grid-margin">
+            <ngx-spinner
+            [fullScreen] = "false"
+             ></ngx-spinner>
+            <div class="col-lg-12">
+              <div class="card rounded mb-4 backButtonFocus" *ngFor="let house of houseList">
+                <div class="card-body p-3">
+                  <a (click)="selectHouse(house)"  class="list_card_a">
+                   <div class="media">
+                    <div class="media-body">
+                      <h6 class="mb-1 font-weight-bold">{{house.title}}</h6>
+                    </div>                              
+                    <i class="fa fa-angle-right icon-md text-primary align-self-center mb-1 ml-3"></i>
+                   </div> 
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- content-wrapper ends -->
+        <!-- partial:partials/_footer.html -->
+        <footer class="footer">
+          <div class="justify-content-center justify-content-sm-between">
+            <span class="text-center">Copyright © 2020 <a href="#" target="_blank">Amelio</a>. All Rights Reserved.</span>
+          </div>
+        </footer>
+        <!-- partial -->
+      </div>
+      <!-- <app-accepted-offer *ngIf="toggle"></app-accepted-offer> -->
+      <!-- main-panel ends -->
+    </div>
+    <!-- page-body-wrapper ends -->
+
+  
+

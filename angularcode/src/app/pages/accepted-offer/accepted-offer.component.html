@@ -1,0 +1,83 @@
+<div class="container-fluid page-body-wrapper">
+      
+  <app-header></app-header>
+  <ngx-spinner ></ngx-spinner>
+  <div class="main-panel">
+    <div class="content-wrapper">
+      <div class="card">
+        <div class="card-body">
+         <a  class="card-title-link"> 
+            <div class="row">
+              <div class="col-md-1 col-lg-1 col-1">
+                <i routerLink='/active' class="fa fa-chevron-left backButtonFocus"></i>
+              </div>
+              <div class="col-md-10 col-lg-10 col-10">
+                <h4 class="card-title" *ngIf="houseDetails font-weight-bold">{{houseDetails.title}}</h4>
+              </div>
+            </div>
+         </a>
+          <div class="row">
+            <div class="col-12">
+              <div class="table-responsive">
+                <table id="order-listing" class="table">
+                  <thead>
+                    <tr class="font-weight-bold">
+                        <th>Name</th>
+                        <th>Email</th>
+                        <th>Contact</th>
+                        <th>Address</th>
+                        <th>Status</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr *ngFor="let lead of leadList">
+                        <td>{{lead.firstName}} {{lead.lastName}}</td>
+                        <td>{{lead.email}}</td>
+                        <td>{{lead.phoneNumber}}</td>
+                        <td>{{lead.address}}</td>
+                        <td>
+                          <div *ngIf="lead.status === 'Active'" class="dropdown">
+                            <button class="btn bg-gradient-info dropdown-toggle leadStatus" type="button" id="dropdownMenuSizeButton2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                              {{lead.status}} <i class="fa fa-angle-down" aria-hidden="true"></i>
+                            </button>
+                            <div class="dropdown-menu" aria-labelledby="dropdownMenuSizeButton2">
+                              <a class="dropdown-item" >Active</a>
+                              <a class="dropdown-item" 
+                              (click)="updateStatus('Accepted',lead._id)" 
+                              onclick="showSwal('warning-message-and-cancel')"
+                              >Accepted Offer</a>
+                              <a class="dropdown-item" (click)="updateStatus('Sold',lead._id)" 
+                              onclick="showSwal('warning-message-and-cancel')"
+                              >Sold</a>
+                            </div>
+                          </div>
+                          <div *ngIf="lead.status === 'Accepted'">
+                              <button type="button" style="cursor: context-menu;" class="btn bg-gradient-warning leadStatus">
+                                Accepted Offer
+                              </button>
+                          </div>
+                          <div *ngIf="lead.status === 'Sold'">
+                              <button type="button" style="cursor: context-menu;" class="btn bg-gradient-danger leadStatus">
+                                Sold
+                              </button>
+                          </div>
+                          <!-- <button type="button" class="btn bg-gradient-warning">
+                            Accepted Offer
+                          </button> -->
+                        </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <app-footer></app-footer>
+  </div>
+
+</div>
+
+
+

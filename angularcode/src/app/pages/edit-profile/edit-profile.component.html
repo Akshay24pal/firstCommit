@@ -1,0 +1,118 @@
+    <!-- partial -->
+    <div class="container-fluid page-body-wrapper">
+      <app-header></app-header>
+      <div class="main-panel">
+        <div class="content-wrapper">
+          <div class="row">
+            <div class="col-lg-12">
+              <div class="card">
+                <div class="card-body">
+                  <form class="cmxform" id="signupForm"  [formGroup]="editForm" (ngSubmit)="updateUserDetails()">
+                    <ngx-spinner
+                    [fullScreen] = "false"
+                    ></ngx-spinner>
+                    <fieldset>
+                      <div class="form-group">
+                        <label class="font-weight-bold">First Name</label>
+                        <input id="" class="form-control" name="firstName" [(ngModel)]="firstName"  formControlName="firstName" type="text" placeholder="First Name">
+                        <div *ngIf="formError.firstName.errors" class="alert-">
+                          <div class="redColor" *ngIf="formError.firstName.errors.required">Please enter First name</div>
+                        </div>
+                      </div>
+                      <div class="form-group">
+                        <label class="font-weight-bold">Last Name</label>
+                        <input id="" class="form-control" name="lastName" [(ngModel)]="lastName" formControlName="lastName" type="text" placeholder="Last Name">
+                        <div *ngIf="formError.lastName.errors" class="alert-">
+                          <div class="redColor" *ngIf="formError.lastName.errors.required">Please enter LastName</div>
+                        </div>
+                      </div>
+                      <div class="form-group">
+                        <label class="font-weight-bold">Phone Number</label>
+                        <input id="" class="form-control" name="phoneNumber" [(ngModel)]="phoneNumber" formControlName="phoneNumber" type="text" placeholder="Phone Number">
+                        <div *ngIf="formError.phoneNumber.errors" class="alert-">
+                          <div class="redColor" *ngIf="formError.phoneNumber.errors.required">Please enter phone number</div>
+                        </div>
+                      </div>
+                      <div class="form-group">
+                        <label class="font-weight-bold">Email Address</label>
+                        <input id="" class="form-control" name="email" [(ngModel)]="email" formControlName="email" type="text" placeholder="Email Address">
+                        <div *ngIf="formError.email.errors" class="alert-">
+                          <div class="redColor" *ngIf="formError.email.errors.required">Please enter Email</div>
+                          <div class="redColor" *ngIf="formError.email.errors.email">Please enter valid email address</div>
+                        </div>
+                      </div>
+                      <div class="form-group">
+                        <label class="font-weight-bold">Designation</label>
+                        <input id="" class="form-control" name="designation" [(ngModel)]="designation" formControlName="designation" type="text" placeholder="Designation">
+                        <div *ngIf="formError.designation.errors" class="alert-">
+                          <div class="redColor" *ngIf="formError.designation.errors.required">Please enter Designation</div>
+                        </div>
+                      </div>
+                      <div class="form-group">
+                        <label class="font-weight-bold">Office Name</label>
+                        <input id="" class="form-control" name="officeName" [(ngModel)]="officeName" formControlName="officeName" type="text" placeholder="Office Name">
+                        <div *ngIf="formError.officeName.errors" class="alert-">
+                          <div class="redColor" *ngIf="formError.officeName.errors.required">Please enter OfficeName</div>
+                        </div>
+                      </div>
+                      <div class="form-group">
+                        <label class="font-weight-bold">Office Address</label>
+                        <input id="" class="form-control" name="officeAddress" [(ngModel)]="officeAddress" formControlName="officeAddress" type="text" placeholder="Office Address">
+                        <div *ngIf="formError.officeAddress.errors" class="alert-">
+                          <div class="redColor" *ngIf="formError.officeAddress.errors.required">Please enter OfficeAddress</div>
+                        </div>
+                      </div>
+                      <div class="form-group">
+                        <label class="font-weight-bold">Office Phone Number</label>
+                        <input id="" class="form-control" name="officePhoneNumber" [(ngModel)]="officePhoneNumber" formControlName="officePhoneNumber" type="text" placeholder="Office Phone Number">
+                        <div *ngIf="formError.officePhoneNumber.errors" class="alert-">
+                          <div class="redColor" *ngIf="formError.officePhoneNumber.errors.required">Please enter OfficePhoneNumber</div>
+                        </div>
+                      </div>
+                     <div class="form-group">
+                        <label class="font-weight-bold">Website</label>
+                        <input id="" class="form-control" name="website" [(ngModel)]="website" formControlName="website" type="text" placeholder="Website">
+                        <div *ngIf="formError.website.errors" class="alert-">
+                          <div class="redColor" *ngIf="formError.website.errors.required">Please enter Website</div>
+                        </div>
+                      </div>
+                      <div class="form-group">
+                        <label class="font-weight-bold" for="upload">Upload a Picture</label>
+                        <input type="text" name="img[]" class="file-upload-default">
+                        <div class="input-group col-xs-12">
+                          <input type="file" name="profile" id="upload" (change)="onProfileChange($event)" class="form-control file-upload-info" placeholder="Upload Company Logo">
+                          <span class="input-group-append">
+                            <button class="file-upload-browse btn btn-primary bg-gradient-info" (click)="uploadFile('profile')" type="button">Upload</button>
+                          </span>
+                        </div>
+                      </div>
+                      <div class="form-group">
+                        <label class="font-weight-bold" for="upload">Agent Signature</label>
+                        <input type="text" name="img[]" class="file-upload-default">
+                        <div class="input-group col-xs-12">
+                          <input type="file" name="signature" id="upload" (change)="onSignatureChange($event)"  class="form-control file-upload-info" placeholder="Agent Signature">
+                          <span class="input-group-append">
+                            <button class="file-upload-browse btn btn-primary bg-gradient-info" (click)="uploadFile('signature')" type="button">Upload</button>
+                          </span>
+                        </div>
+                      </div>
+                      <span class="redColor" *ngIf="error">{{error}}</span>
+                      <!-- <input class="btn btn-primary" type="submit" value="Submit"> -->
+                       <a ><button type="submit" value="Submit" class="send">Edit Profile</button></a>
+                    </fieldset>
+                  </form>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- content-wrapper ends -->
+        <!-- partial:partials/_footer.html -->
+        <app-footer></app-footer>
+        <!-- partial -->
+      </div>
+      <!-- main-panel ends -->
+    </div>
+    <!-- page-body-wrapper ends -->
+
+  <!-- container-scroller -->

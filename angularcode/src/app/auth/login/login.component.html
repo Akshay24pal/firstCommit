@@ -1,0 +1,77 @@
+<div class="container-scroller">
+    <div class="container-fluid page-body-wrapper full-page-wrapper">
+      <div class="content-wrapper d-flex align-items-stretch auth auth-img-bg login_bg">
+        <div class="row flex-grow">
+          <div class="col-lg-12 d-flex align-items-center justify-content-center mx-auto">
+            <div class="auth-form-light text-left p-4">
+              <div class="brand-logo text-center">
+                <img src="../../../assets/images/logo-mini.svg" alt="logo">
+              </div>
+              <h4 class="text-center font-weight-bold">Login</h4>
+              <ngx-spinner ></ngx-spinner>
+              <form class="pt-3" [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+                <div class="form-group">
+                  <!-- <label for="exampleInputEmail">Email</label> -->
+                  <div class="input-group login-group">
+                    <div class="input-group-prepend bg-transparent">
+                      <span class="input-group-text bg-transparent">
+                        <i class="fa fa-envelope text-primary"></i>
+                      </span>
+                    </div>
+                    <input type="text" class="form-control form-control-lg" formControlName="email" id="exampleInputEmail" placeholder="Email Address" required>
+                  </div>
+                
+                <div *ngIf="formError.email.errors" class="alert">
+                  <div class="redColor" *ngIf="formError.email.errors.required">Email is required</div>
+                  <div class="redColor" *ngIf="formError.email.errors.email">Please enter valid email address</div>
+                </div>
+              </div>
+                
+                <div class="form-group">
+                  <!-- <label for="exampleInputPassword">Password</label> -->
+                  <div class="input-group login-group">
+                    <div class="input-group-prepend bg-transparent">
+                      <span class="input-group-text bg-transparent">
+                        <!-- <i class="fa fa-lock text-primary"></i> -->
+                        <img class="pl-1" src="../../../assets/images/lock.svg"/>
+                      </span>
+                    </div>
+                    <input [type]="passwordType ? 'text' : 'password'" class="form-control form-control-lg" (change)="emptyError()" formControlName="password" id="exampleInputPassword" placeholder="Password">                        
+                  <span>
+                    <span (click)="passwordShow()" class="material-icons slash-eye">
+                    visibility
+                    </span>
+                  </span>
+                  </div>
+
+                  <div *ngIf="loginForm.controls['password'].invalid && (loginForm.controls['password'].dirty || loginForm.controls['password'].touched)" class="alert">
+                  <ng-container *ngIf="loginForm.controls['password'].errors.required; else elseTemplate">
+                    <span class="redColor">Password is required</span>
+                  </ng-container>
+                  <ng-template #elseTemplate>
+                    <span class="redColor">Enter Correct Password</span>
+                  </ng-template>
+                  
+                </div>
+              </div>
+                <span class="redColor" *ngIf="error">{{error}}</span>
+                <div class="my-3">
+                  <button class="btn btn-block btn-primary btn-lg auth-form-btn" type="submit">Submit</button>
+                </div>
+                <div class="text-center mt-4 font-weight-light">
+                  <a href="reset-password" class="auth-link text-black">Forgot password ?</a>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- content-wrapper ends -->
+    </div>
+    <!-- page-body-wrapper ends -->
+  </div>
+  <!-- container-scroller -->
+
+  
+
+

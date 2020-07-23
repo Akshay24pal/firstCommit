@@ -1,0 +1,247 @@
+<!-- partial -->
+<div class="card">
+  <div class="card-body">
+    <div class="row mb-4">
+      <!-- <a href="#" class="card-title-link"> -->
+      <ngx-spinner></ngx-spinner>
+      <div class="col-md-1 col-lg-1 col-1">
+        <a class="card-title-link">
+          <i routerLink="/setting/manage-question" class="fa fa-chevron-left"></i>
+        </a>
+      </div>
+      <div class="col-md-9 col-lg-9 col-10">
+        <a class="card-title-link">
+          <h4 class="card-title" *ngIf="houseDetails">{{houseDetails.title}}</h4>
+        </a>
+      </div>
+      <!-- </a> -->
+      <div class="col-md-2 col-lg-2 col-12">
+        <a>
+          <button type="button" data-toggle="modal" (click)="openAddModal(addTemplate)" class="send">Add</button>
+        </a>
+      </div>
+    </div>
+    <div *ngIf="questionList">
+      <div class="card mb-4" *ngFor="let question of questionList">
+        <div class="card-body">
+          <h6 *ngIf="question">{{question.title}}</h6>
+          <div class="row">
+            <div class="col-md-10 col-lg-10 mb-2">
+              <div class="template-demo">
+                <button type="button" class="btn btn-primary bg-gradient-info">Yes</button>
+                <button type="button" class="btn btn-secondary">No</button>
+              </div>
+            </div>
+            <div class="col-md-2 col-lg-2 col-6">
+              <div class="template-demo d-flex justify-content-space-evenly flex-nowrap">
+                <a>
+                  <button type="button" (click)="openModal(template,question._id)" class="btn mr-1 btn-success btn-rounded btn-icon">
+                    <i class="fa fa-pencil"></i>
+                  </button>
+                </a>
+                <a *ngIf="question">
+                  <button type="button" (click)="removeQuestion(question)" class="btn btn-danger justify-content-space-evenly btn-rounded btn-icon">
+                    <i class="fa fa-trash-o"></i>
+                  </button>
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="modal fade" id="myModal" role="dialog">
+
+      <div class="modal-dialog">
+
+
+        <div class="modal-content">
+          <div class="auth-form-light text-left p-4">
+            <div class="brand-logo text-center">
+            </div>
+            <h4 class="text-center font-weight-bold">Add questions</h4>
+            <form class="pt-3" [formGroup]="addQuestionForm" (ngSubmit)="onSubmit()">
+              <div class="form-group">
+                <label for="exampleInputEmail">Question</label>
+
+                <div class="input-group login-group">
+                  <div class="input-group-prepend bg-transparent">
+                    <span class="input-group-text bg-transparent">
+                    </span>
+                  </div>
+                  <input type="text" formControlName="title" name="title" class="form-control form-control-lg" id="exampleInputEmail" placeholder="Input Question">
+                </div>
+              </div>
+              <div class="form-group">
+                <label for="description">Option</label>
+                <br>
+                <div class="row">
+                  <div class="col-md-10 col-lg-10 mb-2">
+                    <div class="template-demo">
+                      <button type="button" class="btn btn-secondary">Yes</button>
+                      <button type="button" class="btn btn-primary bg-gradient-info">No</button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="my-3">
+                <button class="btn btn-block btn-primary btn-lg font-weight-bold auth-form-btn">Submit</button>
+              </div>
+            </form>
+          </div>
+
+        </div>
+
+      </div>
+    </div>
+
+
+    <ng-template #addTemplate>
+      <div class="modal-header">
+        <h4 class="modal-title pull-left">Add question</h4>
+        <button type="button" class="close pull-right" aria-label="Close" (click)="closeModal()">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <div class="auth-form-light text-left p-4">
+          <div class="brand-logo text-center">
+          </div>
+          <!-- <h4 class="text-center font-weight-bold">Add questions</h4> -->
+          <form class="pt-3" [formGroup]="addQuestionForm" (ngSubmit)="onSubmit()">
+            <div class="form-group">
+              <label for="description">Select Question Type:</label>
+              <div class="input-group login-group">
+                <div class="input-group-prepend bg-transparent">
+                  <span class="input-group-text bg-transparent">
+                  </span>
+                </div>
+                <select (change)="changeOption($event)" class="form-control form-control-lg" id="exampleInputEmail">
+                  <option value="single" [selected]="true">Single</option>
+                  <option value="multiple">Multiple</option>
+                </select>
+              </div>
+            </div>
+            <div *ngIf="questionType==='multiple'">
+              <div class="form-group">
+                <label for="exampleInputEmail">Question</label>
+                <div class="input-group login-group">
+                  <div class="input-group-prepend bg-transparent">
+                    <span class="input-group-text bg-transparent">
+                    </span>
+                  </div>
+                  <input type="text" formControlName="title" name="title" class="form-control form-control-lg" id="exampleInputEmail" placeholder="Input Question">
+                </div>
+              </div>
+              <div class="form-group">
+                <label for="description">Option</label>
+                <br>
+                <div class="row">
+                  <div class="col-md-10 col-lg-10 mb-2">
+                    <div class="template-demo">
+                      <!-- <button type="button" class="btn btn-secondary">Yes</button>
+                      <button type="button" class="btn btn-primary bg-gradient-info">No</button> -->
+                      <!-- <input type="text" id="box"> -->
+
+                      <ul *ngFor="let questionOpt of questionOptionsArray;let i = index">
+                        <li>{{questionOpt}}</li>
+                      </ul>
+                      <div class="input-group login-group">
+                        <div class="input-group-prepend bg-transparent">
+                          <span class="input-group-text bg-transparent">
+                          </span>
+                        </div>
+                        <input type="text" [(ngModel)]="questionOption" formControlName="questionOption" name="questionOption" class="form-control form-control-lg"
+                          id="exampleInputEmail" placeholder="Enter Option">
+                      </div>
+                      <button (click)="addQuestionOption()" type="button" class="btn btn-primary bg-gradient-info">Ok</button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div *ngIf="questionType==='single'">
+              <div class="form-group">
+                <label for="exampleInputEmail">Question</label>
+                <div class="input-group login-group">
+                  <div class="input-group-prepend bg-transparent">
+                    <span class="input-group-text bg-transparent">
+                    </span>
+                  </div>
+                  <input type="text" formControlName="title" name="title" class="form-control form-control-lg" id="exampleInputEmail" placeholder="Input Question">
+                </div>
+              </div>
+              <div class="form-group">
+                <label for="description">Option</label>
+                <br>
+                <div class="row">
+                  <div class="col-md-10 col-lg-10 mb-2">
+                    <div class="template-demo">
+                      <button type="button" class="btn btn-secondary">Yes</button>
+                      <button type="button" class="btn btn-primary bg-gradient-info">No</button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="my-3">
+              <button type="submit" class="btn btn-block btn-primary btn-lg font-weight-bold auth-form-btn">Submit</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </ng-template>
+
+
+    <ng-template #template>
+      <div class="modal-header">
+        <h4 class="modal-title pull-left">Edit question</h4>
+        <button type="button" class="close pull-right" aria-label="Close" (click)="modalRef.hide()">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <div class="auth-form-light text-left p-4">
+          <div class="brand-logo text-center">
+          </div>
+          <!-- <h4 class="text-center font-weight-bold">Add questions</h4> -->
+          <form class="pt-3" [formGroup]="editQuestionForm" (ngSubmit)="updateQuestion()">
+            <div class="form-group">
+              <label for="exampleInputEmail">Question</label>
+
+              <div class="input-group login-group">
+                <div class="input-group-prepend bg-transparent">
+                  <span class="input-group-text bg-transparent">
+                  </span>
+                </div>
+                <input type="text" formControlName="editTitle" [(ngModel)]="editTitle" name="editTitle" class="form-control
+              form-control-lg" id="exampleInputEmail" placeholder="Input Question">
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="description">Option</label>
+              <br>
+              <div class="row">
+                <div class="col-md-10 col-lg-10 mb-2">
+                  <div class="template-demo">
+                    <button type="button" class="btn btn-secondary">Yes</button>
+                    <button type="button" class="btn btn-primary bg-gradient-info">No</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="my-3">
+              <button type="submit" class="btn btn-block btn-primary btn-lg font-weight-bold auth-form-btn">Submit</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </ng-template>
+
+  </div>
+</div>
+
+<!-- page-body-wrapper ends -->
+
+
+-
